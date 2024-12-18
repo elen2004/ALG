@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 1.5em 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 1em;
+            background-color: #333;
+            color: #fff;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin: 2em auto;
+            max-width: 800px;
+            padding: 1.5em;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #007BFF;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #007BFF;
+            color: #fff;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 0.5em 0;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 15%;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+        }
+        .sidebar h3 {
+            color: #007BFF;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 0.5em;
+        }
+        .sidebar ul li a:hover {
+            background-color: #007BFF;
+        }
+        .courses, .quiz-subjects, .quiz-questions {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleCourses() {
+            document.getElementById('math-courses').style.display = 'block';
+        }
+
+        function showGradeOne() {
+            document.getElementById('grade-one').style.display = 'block';
+        }
+
+        function goToHome() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showQuizSubjects() {
+            document.getElementById('quiz-subjects').style.display = 'block';
+        }
+
+        function showQuizQuestions(subject) {
+            const quizContainer = document.getElementById('quiz-questions');
+            quizContainer.style.display = 'block';
+            quizContainer.innerHTML = `
+                <h2>${subject} Quiz</h2>
+                <p>1. Question 1, what is equal 5+6 ${subject} <input type="text" /></p>
+                <p>2. Question 2, solve this equation 3x=6 ${subject} <input type="text" /></p>
+                <p>3. Question 3, how many angles does triangle have ${subject} <input type="text" /></p>
+                <button onclick="alert('Quiz Submitted!')">Submit Answers</button>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>AI Study Assistant</h1>
+        <p>Save time, learn faster, and test your knowledge.</p>
+        <button onclick="goToHome()">Home</button>
+        <button onclick="alert('Login Page - Enter email and password')">Login</button>
+    </header>
+
+    <nav>
+        <div>
+            <a href="#" onclick="goToHome()">Home</a>
+            <a href="#" onclick="alert('Login Page - Enter email and password')">Login</a>
+            <a href="#">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <h3>Subjects</h3>
+        <ul>
+            <li><a href="#" onclick="toggleCourses()">Math</a></li>
+            <li><a href="#">Science</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Languages</a></li>
+            <li><a href="#">Physics</a></li>
+            <li><a href="#">Biology</a></li>
+            <li><a href="#">Literature</a></li>
+            <li><a href="#">Music</a></li>
+            <li><a href="#">Chemistry</a></li>
+            <li><a href="#">Armenian</a></li>
+            <li><a href="#">English</a></li>
+        </ul>
+    </div>
+
+    <section id="math-courses" class="courses">
+        <h2>Math - Grades 1 to 12</h2>
+        <button onclick="showGradeOne()">Grade 1</button>
+        <button>Grade 2</button>
+        <button>Grade 3</button>
+        <button>Grade 4</button>
+        <button>Grade 5</button>
+        <button>Grade 6</button>
+        <button>Grade 7</button>
+        <button>Grade 8</button>
+        <button>Grade 9</button>
+        <button>Grade 10</button>
+        <button>Grade 11</button>
+        <button>Grade 12</button>
+    </section>
+
+    <section id="grade-one" style="display:none;">
+        <h2>Grade 1 - Lessons</h2>
+        <ul>
+            <li>Lesson 1: How to Learn Counting</li>
+            <li>Lesson 2: Introduction to Subtracting</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ask AI Anything</h2>
+        <p>Type your question below and get instant answers powered by AI.</p>
+        <input type="text" placeholder="Type your question here..." style="width: 100%; padding: 0.5em; margin-bottom: 1em;">
+        <button>Get Answer</button>
+    </section>
+
+    <section>
+        <h2>Test Your Knowledge</h2>
+        <p>Take a quick quiz to see what you've learned!</p>
+        <button onclick="showQuizSubjects()">Take a Quiz</button>
+    </section>
+
+    <section id="quiz-subjects" class="quiz-subjects">
+        <h2>Choose a Subject</h2>
+        <button onclick="showQuizQuestions('Math')">Math</button>
+        <button onclick="showQuizQuestions('Science')">Science</button>
+        <button onclick="showQuizQuestions('History')">History</button>
+        <button onclick="showQuizQuestions('Languages')">Languages</button>
+    </section>
+
+    <section id="quiz-questions" class="quiz-questions">
+        <!-- Quiz questions will be populated dynamically here -->
+    </section>
+
+    <section>
+        <h2>Random Facts About Everything</h2>
+        <ul>
+            <li>Did you know? The Eiffel Tower grows 6 inches taller in the summer due to heat expansion!</li>
+            <li>Did you know? Honey never spoils; it can last thousands of years!</li>
+            <li>Did you know? Bananas are berries, but strawberries are not!</li>
+            <li>Did you know? Octopuses have three hearts!</li>
+            <li>Did you know? The shortest war in history lasted 38 minutes.</li>
+            <li>Did you know? There are more stars in the universe than grains of sand on all the Earth’s beaches.</li>
+            <li>Did you know? Wombat is cube-shaped!</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AI Study Assistant. All rights reserved.</p>
+    </footer>
+</body>
+</html>
